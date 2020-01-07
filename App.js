@@ -36,7 +36,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <StatusBar barStyle="dark-content" />
+        <StatusBar barStyle="light-content" />
         <SafeAreaView>
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
@@ -49,13 +49,13 @@ class App extends Component {
             )}
             <View style={styles.body}>
               <Button
-                title={'Local Notification'}
+                title={'Notifique-me agora!'}
                 onPress={() => {
                   this.notification.localNotification();
                 }}
               />
               <Button
-                title={'Scheduled (30s) Notification'}
+                title={'Agendamento de notificação (30s)'}
                 onPress={() => {
                   this.notification.scheduleNotification();
                 }}
