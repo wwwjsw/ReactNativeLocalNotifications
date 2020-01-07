@@ -8,37 +8,32 @@ import {
   Text,
   StatusBar,
   Button,
-  Alert
+  Alert,
 } from 'react-native';
 
-import {
-  Header,
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
-
+import {Header, Colors} from 'react-native/Libraries/NewAppScreen';
 
 import NotificationService from './NotificationService';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
-		//creating a new instance of the NotificationService 
-		//& passing in the function we want called when the notification happens
+    //creating a new instance of the NotificationService
+    //& passing in the function we want called when the notification happens
     this.notification = new NotificationService(this.onNotification);
   }
 
-	//Gets called when the notification comes in
-  onNotification = (notif) => {
+  //Gets called when the notification comes in
+  onNotification = notif => {
     Alert.alert(notif.title, notif.message);
-  }
-	
-	//Permissions to use notifications
+  };
+
+  //Permissions to use notifications
   handlePerm(perms) {
-    Alert.alert("Permissions", JSON.stringify(perms));
+    Alert.alert('Permissions', JSON.stringify(perms));
   }
 
-  render(){
+  render() {
     return (
       <>
         <StatusBar barStyle="dark-content" />
@@ -53,8 +48,18 @@ class App extends Component {
               </View>
             )}
             <View style={styles.body}>
-              <Button title={"Local Notification"} onPress={() => { this.notification.localNotification() }} />
-              <Button title={"Scheduled (30s) Notification"} onPress={() => { this.notification.scheduleNotification() }} />
+              <Button
+                title={'Local Notification'}
+                onPress={() => {
+                  this.notification.localNotification();
+                }}
+              />
+              <Button
+                title={'Scheduled (30s) Notification'}
+                onPress={() => {
+                  this.notification.scheduleNotification();
+                }}
+              />
             </View>
           </ScrollView>
         </SafeAreaView>
